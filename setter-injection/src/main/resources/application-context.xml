@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="accountService" class="spring.bean.AccountServiceImpl">
+		<property name="accountDao" ref="accountDao" />
+	</bean>
+
+	<bean id="accountDao" class="spring.bean.AccountDaoInMemoryImpl">
+		<property name="accountsMap">
+			<map>
+				<entry key="3" value-ref="account1" />
+				<entry key="4" value-ref="account2" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="account1" class="spring.bean.Account">
+		<property name="id" value="3" />
+		<property name="ownerName" value="John" />
+		<property name="balance" value="100.0" />
+		<property name="locked" value="false" />
+	</bean>
+
+	<bean id="account2" class="spring.bean.Account">
+		<property name="id" value="4" />
+		<property name="ownerName" value="Mary" />
+		<property name="balance" value="200.0" />
+		<property name="locked" value="false" />
+	</bean>
+</beans>
